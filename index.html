@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>02 Maret 2006</title>
+<link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+<style>
+/* PALETTE: DEEP LUXURY NAVY & CHAMPAGNE */
+body {
+  margin: 0;
+  font-family: 'Marck Script', cursive;
+  /* Gradasi Gelap Mahal */
+  background: radial-gradient(circle at center, #1a2332 0%, #080c14 100%); 
+  color: #e2d1b1; /* Warna Champagne Soft (Vibes Mahal) */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  z-index: 5;
+}
+
+.content-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.content-box.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* TEKS GLOW CHAMPAGNE */
+.glow-blue {
+  color: #e2d1b1;
+  font-size: 25px;
+  line-height: 1.6;
+  /* Glow lembut warna krem emas */
+  text-shadow: 0 0 12px rgba(226, 209, 177, 0.6);
+  margin-bottom: 20px;
+}
+
+/* BINGKAI FOTO MEWAH (SOFT SANDSTONE) */
+.photo-frame {
+  display: inline-block;
+  padding: 12px 12px 40px 12px;
+  background: #f4eee0; /* Warna kertas kuno/pasir yang sangat aesthetic */
+  border-radius: 2px;
+  /* Shadow lebih dalam agar foto terlihat menonjol keluar */
+  box-shadow: 0 30px 60px rgba(0,0,0,0.8); 
+  margin-bottom: 15px;
+  width: 82%;
+  border: 1px solid rgba(226, 209, 177, 0.3);
+}
+
+img {
+  width: 100%;
+  display: block;
+  filter: sepia(10%); /* Memberikan efek sedikit hangat pada foto */
+}
+
+.surprise-zoom .photo-frame {
+  transform: scale(0.6);
+  transition: transform 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.active.surprise-zoom .photo-frame {
+  transform: scale(1);
+}
+
+.typewriter {
+  font-size: 19px;
+  line-height: 1.4;
+  min-height: 140px;
+  padding: 0 15px;
+  color: #d1c1a5;
+  text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+/* TOMBOL PANAH ELEGANT */
+.btn-arrow {
+  background: transparent;
+  border: 1px solid #e2d1b1;
+  color: #e2d1b1;
+  font-size: 24px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px auto 0;
+  transition: all 0.4s;
+  opacity: 0.8;
+}
+
+.btn-arrow:hover {
+  background: #e2d1b1;
+  color: #080c14;
+  opacity: 1;
+  box-shadow: 0 0 15px #e2d1b1;
+}
+
+/* HEART WARMA CHAMPAGNE */
+.heart {
+  position: absolute;
+  color: #e2d1b1;
+  font-size: 16px;
+  pointer-events: none;
+  animation: floatUp 4.5s linear forwards;
+  opacity: 0.4;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(110vh); opacity: 0; }
+  20% { opacity: 0.4; }
+  100% { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<audio id="bgmusic" loop>
+  <source src="about_you_reff.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+  <div id="slide-0" class="content-box active">
+    <h1 style="font-size: 42px; color: #e2d1b1;">your birthday 🎂</h1>
+    <h2 style="opacity: 0.4; font-size: 20px; letter-spacing: 5px;">02 . 03 . 2006</h2>
+    <button class="btn-arrow" onclick="startApp()">➜</button>
+  </div>
+
+  <div id="slide-1" class="content-box">
+    <div class="glow-blue">
+      hai👋🏻 ksatriaku... <br> sudah lama tidak saling menyapa. <br><br>
+      tapi.. aku harap kamu baik-baik saja, dan merasa lebih bahagia di hari spesial mu
+    </div>
+    <button class="btn-arrow" onclick="goToSlide(2)">➜</button>
+  </div>
+
+  <div id="slide-2" class="content-box">
+    <div class="glow-blue">
+      Waittt... <br> sekarang kamu berdo'a dulu yu untuk hal-hal baik yang akan datang ✨️
+    </div>
+    <button class="btn-arrow" onclick="goToSlide(3)">➜</button>
+  </div>
+
+  <div id="slide-3" class="content-box surprise-zoom">
+    <div class="photo-frame"><img src="foto1.jpeg"></div>
+    <div id="text-3" class="typewriter"></div>
+    <button class="btn-arrow" onclick="goToSlide(4)">➜</button>
+  </div>
+
+  <div id="slide-4" class="content-box">
+    <div class="photo-frame"><img src="foto2.jpeg"></div>
+    <div id="text-4" class="typewriter"></div>
+    <button class="btn-arrow" onclick="goToSlide(5)">➜</button>
+  </div>
+
+  <div id="slide-5" class="content-box">
+    <div class="photo-frame"><img src="foto3.jpeg"></div>
+    <div id="text-5" class="typewriter"></div>
+    <button class="btn-arrow" onclick="goToSlide(6)">➜</button>
+  </div>
+
+  <div id="slide-6" class="content-box">
+    <div class="glow-blue" style="font-size: 28px;">
+      terima kasih sudah lahir,<br>
+      terima kasih sudah tumbuh,<br>
+      dan telah menjadi seseorang yang berarti. 💙
+    </div>
+    <p style="opacity: 0.4; font-size: 18px; margin-top: 30px;">— dari aku, yang selalu mendoakanmu —</p>
+  </div>
+</div>
+
+<script>
+const dataText = {
+  3: "di tanggal ini, seseorang yang istimewa hadir dan membuat dunia terasa sedikit lebih hangat. mungkin semesta tidak sadar, tetapi hari itu ia sedang menitipkan cahaya pada seorang laki-laki yang kelak tumbuh dengan caranya sendiri. dan sejak aku mengenalmu, aku tahu cahaya itu nyata. bukan hanya dari senyummu, tetapi dari caramu memperlakukan dunia dengan lembut, dengan sabar, dengan hati yang jarang dimiliki banyak orang. ✨",
+  4: "senyummu adalah rumah yang tenang, tempat segala lelah ingin pulang. aku menyukai caramu berjalan pelan, caramu bercerita, bahkan caramu diam. di antara banyak hal yang tak pasti di dunia ini, entah mengapa melihatmu baik-baik saja selalu menjadi doaku yang paling sungguh. karena bahagiaku sederhana, cukup tahu bahwa kamu baik-baik saja dan tetap menjadi dirimu sendiri. ☁️",
+  5: "bertambahnya usiamu bukan hanya tentang angka, tetapi tentang langkah yang sudah kau tempuh dengan berani. semoga tahun-tahun ke depan membawamu pada bahagia yang lebih luas, mimpi yang lebih dekat, dan hati yang tetap hangat seperti sekarang. dan jika suatu hari dunia terasa berat, ingatlah bahwa ada seseorang di sini yang selalu mendoakanmu dalam diam, yang diam-diam menyebut namamu dalam harapan, dan yang selalu bersyukur karena kamu pernah hadir dihidupnya. 💙"
+};
+
+function startApp() {
+  document.getElementById('bgmusic').play();
+  goToSlide(1);
+  setInterval(createHeart, 600);
+}
+
+function goToSlide(n) {
+  document.querySelectorAll('.content-box').forEach(s => s.classList.remove('active'));
+  const next = document.getElementById('slide-' + n);
+  next.classList.add('active');
+  if(dataText[n]) {
+    typeWriter(document.getElementById('text-' + n), dataText[n]);
+  }
+}
+
+function typeWriter(element, text) {
+  element.innerHTML = "";
+  let i = 0;
+  function typing() {
+    if (i < text.length) {
+      element.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typing, 40);
+    }
+  }
+  typing();
+}
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "✨"; // Aku ganti jadi bintang kecil yang glow agar lebih mewah
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 5000);
+}
+</script>
+</body>
+</html>
